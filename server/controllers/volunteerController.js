@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const database = require("../config/database");
+const mailer = require("../utils/mailer");
 
 /**
  * Returns all the volunteers found in the database
@@ -28,6 +29,7 @@ const createNewVolunteer = asyncHandler(async (req, res) => {
     if (err) throw new Error(err.message);
     console.log("Server posted: ", firstName, lastName);
     res.json(result);
+    mailer.sendCreateConfirmation(email, firstName);
   });
 });
 
@@ -43,6 +45,7 @@ const removeVolunteer = asyncHandler(async (req, res) => {
     if (err) throw new Error(err.message);
     console.log("Server: deleted: ", ea);
     res.json(result);
+    mailer.sendDeleteConfirmation(email);
   });
 });
 
@@ -59,6 +62,7 @@ const updateVolunteer = asyncHandler(async (req, res) => {
     if (err) throw new Error(err.message);
     console.log(`Server changed: ${oldEmail} to ${newEmail}`);
     res.send(result);
+    mailer.sendUpdateConfirmation(oldEmail, newEmail);
   });
 });
 
