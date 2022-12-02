@@ -65,7 +65,7 @@ async function sendNewMail(email, subject, htmlToSend) {
  */
 async function sendCreateConfirmation(email, firstName) {
   let rawHTML = await readFile(
-    "./templates/createConfirmation.html",
+    "./server/utils/templates/createConfirmation.html",
     "utf8"
   ); // Read HTML template
 
@@ -102,7 +102,7 @@ async function sendCreateConfirmation(email, firstName) {
  */
 async function sendUpdateConfirmation(oldEmail, newEmail) {
   let rawHTML = await readFile(
-    "./templates/updateConfirmation.html",
+    "./server/utils/templates/updateConfirmation.html",
     "utf8"
   ); // Read HTML template
   let template = handlebars.compile(rawHTML); // Compile template with handlebars
@@ -132,7 +132,7 @@ async function sendUpdateConfirmation(oldEmail, newEmail) {
  */
 async function sendDeleteConfirmation(ea) {
   let rawHTML = await readFile(
-    "./templates/deleteConfirmation.html",
+    "./server/utils/templates/deleteConfirmation.html",
     "utf8"
   ); // Read HTML template
   let template = handlebars.compile(rawHTML); // Compile template with handlebars
