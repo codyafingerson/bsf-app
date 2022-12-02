@@ -155,6 +155,12 @@ async function sendDeleteConfirmation(ea) {
   }
 }
 
+/**
+ * Ensures the emailer does not trigger an error message if the users email ends with example.com or test.com
+ * @param {string} str the email string
+ * @returns true if the email address is not example.com or test.com
+ * @access private
+ */
 function isValidEmail(str) {
   let isValid = false;
   let strAfterAtSign = str.split("@")[1];
