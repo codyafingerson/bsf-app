@@ -15,5 +15,5 @@ app.use(express.urlencoded({extended: false}));
 app.use('/api', require("./routes/volunteer"));
 
 app.listen(port, () => {
-    console.log(`Application running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
