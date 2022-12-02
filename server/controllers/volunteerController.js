@@ -43,7 +43,7 @@ const removeVolunteer = asyncHandler(async (req, res) => {
   const sqlDelete = "DELETE FROM volunteers WHERE email_address = ?";
   database.query(sqlDelete, [email], (err, result) => {
     if (err) throw new Error(err.message);
-    console.log("Server: deleted: ", ea);
+    console.log("Server: deleted: ", email);
     res.json(result);
     mailer.sendDeleteConfirmation(email);
   });
